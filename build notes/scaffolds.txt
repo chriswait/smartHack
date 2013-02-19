@@ -1,0 +1,56 @@
+rails g scaffold Ward name:string
+
+rails g scaffold Street name:string postcode:string latitude:float longitude:float dog_foul:float vandalism:float graffiti:float weeds:float detritus:float fly_posting:float bin_count:float number_overflowing:float smoking:float drinks:float confectionary:float fast_food:float pedestrian_individual:float business:float domestic:float construction:float animal_faeces:float other:float ward:references
+
+rails g scaffold PYDWGN name:string value:float latitude:float longitude:float ward:references
+
+rails g scaffold Graffiti latitude:float longitude:float street:references
+
+rails g scaffold Vote isVandilism:bit graffiti:references
+
+rails g scaffold Comment comment:text user:string graffiti:references
+
+
+
+class Ward < ActiveRecord::Base
+  has_many :streets
+  has_many :PYDWGN
+end
+
+class Street < ActiveRecord::Base
+  has_many :graffiti
+end
+
+class PYDWGN < ActiveRecord::Base
+  belongs_to :ward
+end
+
+class Graffiti < ActiveRecord::Base
+  belongs_to :street
+  has_many :votes
+  has_many :comments
+end
+
+class Vote < ActiveRecord::Base
+  belongs_to :graffiti
+end
+
+class Comment < Activerecord::Base
+  belongs_to :graffiti
+end
+
+
+
+(Add paperclip bits after initial scaffold)
+
+class AddAvatarColumnsToUsers < ActiveRecord::Migration
+  def change
+    add_attachment :graffiti(?), :image
+  end
+end
+
+class Graffiti < ActiveRecord::Base
+  belongs_to :street
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>", :super_thumb => "32x32>" }
+  validates :image, :attachment_presence => true
+end
