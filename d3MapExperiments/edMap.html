@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
         <link rel="stylesheet" href="mapExp.css" />
         <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+        <script src = "../datasets/wardBoundaries/geoJsonWards.js"> </script>
 
     </head>
     
@@ -21,9 +22,9 @@
             }).addTo(map);
 
             //add a marker in the given location, attach some popup content to it and open the popup
-            L.marker([55.95, -3.2200]).addTo(map)
-                .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
-                .openPopup();
+            L.geoJson(wardsData).addTo(map);
+
+
         </script>
     </body>
 <html>
