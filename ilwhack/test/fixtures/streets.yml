@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  postcode: MyString
+  latitude: 1.5
+  longitude: 1.5
+  dog_foul: 1.5
+  vandalism: 1.5
+  graffiti: 1.5
+  weeds: 1.5
+  detritus: 1.5
+  fly_posting: 1.5
+  bin_count: 1.5
+  number_overflowing: 1.5
+  smoking: 1.5
+  drinks: 1.5
+  confectionary: 1.5
+  fast_food: 1.5
+  pedestrian_individual: 1.5
+  business: 1.5
+  domestic: 1.5
+  construction: 1.5
+  animal_faeces: 1.5
+  other: 1.5
+  ward: 
+
+two:
+  name: MyString
+  postcode: MyString
+  latitude: 1.5
+  longitude: 1.5
+  dog_foul: 1.5
+  vandalism: 1.5
+  graffiti: 1.5
+  weeds: 1.5
+  detritus: 1.5
+  fly_posting: 1.5
+  bin_count: 1.5
+  number_overflowing: 1.5
+  smoking: 1.5
+  drinks: 1.5
+  confectionary: 1.5
+  fast_food: 1.5
+  pedestrian_individual: 1.5
+  business: 1.5
+  domestic: 1.5
+  construction: 1.5
+  animal_faeces: 1.5
+  other: 1.5
+  ward: 

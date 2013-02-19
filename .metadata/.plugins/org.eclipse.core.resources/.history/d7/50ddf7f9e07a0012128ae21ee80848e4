@@ -1,0 +1,83 @@
+class GraffitisController < ApplicationController
+  # GET /graffitis
+  # GET /graffitis.json
+  def index
+    @graffitis = Graffiti.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @graffitis }
+    end
+  end
+
+  # GET /graffitis/1
+  # GET /graffitis/1.json
+  def show
+    @graffiti = Graffiti.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @graffiti }
+    end
+  end
+
+  # GET /graffitis/new
+  # GET /graffitis/new.json
+  def new
+    @graffiti = Graffiti.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @graffiti }
+    end
+  end
+
+  # GET /graffitis/1/edit
+  def edit
+    @graffiti = Graffiti.find(params[:id])
+  end
+
+  # POST /graffitis
+  # POST /graffitis.json
+  def create
+    @graffiti = Graffiti.new(params[:graffiti])
+
+    respond_to do |format|
+      if @graffiti.save
+        format.html { redirect_to @graffiti, notice: 'Graffiti was successfully created.' }
+        format.json { render json: @graffiti, status: :created, location: @graffiti }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @graffiti.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /graffitis/1
+  # PUT /graffitis/1.json
+  def update
+    @graffiti = Graffiti.find(params[:id])
+
+    respond_to do |format|
+      if @graffiti.update_attributes(params[:graffiti])
+        format.html { redirect_to @graffiti, notice: 'Graffiti was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @graffiti.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /graffitis/1
+  # DELETE /graffitis/1.json
+  def destroy
+    @graffiti = Graffiti.find(params[:id])
+    @graffiti.destroy
+
+    respond_to do |format|
+      format.html { redirect_to graffitis_url }
+      format.json { head :no_content }
+    end
+  end
+end

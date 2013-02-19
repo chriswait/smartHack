@@ -1,0 +1,4 @@
+class Graffiti < ActiveRecord::Base
+  belongs_to :street
+  attr_accessible :latitude, :longitude
+end

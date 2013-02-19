@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @graffiti.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @graffiti.longitude %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @graffiti.street %>
+</p>
+
+
+<%= link_to 'Edit', edit_graffiti_path(@graffiti) %> |
+<%= link_to 'Back', graffitis_path %>

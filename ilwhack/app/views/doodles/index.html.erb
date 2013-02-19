@@ -1,0 +1,27 @@
+<h1>Listing doodles</h1>
+
+<table>
+  <tr>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Street</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @doodles.each do |doodle| %>
+  <tr>
+    <td><%= doodle.latitude %></td>
+    <td><%= doodle.longitude %></td>
+    <td><%= doodle.street %></td>
+    <td><%= link_to 'Show', doodle %></td>
+    <td><%= link_to 'Edit', edit_doodle_path(doodle) %></td>
+    <td><%= link_to 'Destroy', doodle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Doodle', new_doodle_path %>

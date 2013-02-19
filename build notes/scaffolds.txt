@@ -4,11 +4,11 @@ rails g scaffold Street name:string postcode:string latitude:float longitude:flo
 
 rails g scaffold PYDWGN name:string value:float latitude:float longitude:float ward:references
 
-rails g scaffold Graffiti latitude:float longitude:float street:references
+rails g scaffold Doodle latitude:float longitude:float street:references
 
-rails g scaffold Vote isVandilism:bit graffiti:references
+rails g scaffold Vote isVandilism:bit doodle:references
 
-rails g scaffold Comment comment:text user:string graffiti:references
+rails g scaffold Comment comment:text user:string doodle:references
 
 
 
@@ -18,32 +18,33 @@ class Ward < ActiveRecord::Base
 end
 
 class Street < ActiveRecord::Base
-  has_many :graffiti
+  has_many :doodles
+  belongs_to :ward
 end
 
 class PYDWGN < ActiveRecord::Base
   belongs_to :ward
 end
 
-class Graffiti < ActiveRecord::Base
+class Doodle < ActiveRecord::Base
   belongs_to :street
   has_many :votes
   has_many :comments
 end
 
 class Vote < ActiveRecord::Base
-  belongs_to :graffiti
+  belongs_to :doodle
 end
 
 class Comment < Activerecord::Base
-  belongs_to :graffiti
+  belongs_to :doodle
 end
 
 
 
 (Add paperclip bits after initial scaffold)
 
-class AddAvatarColumnsToUsers < ActiveRecord::Migration
+class AddDoodleFileFields < ActiveRecord::Migration
   def change
     add_attachment :graffiti(?), :image
   end

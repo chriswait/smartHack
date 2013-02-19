@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @doodle.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @doodle.longitude %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @doodle.street %>
+</p>
+
+
+<%= link_to 'Edit', edit_doodle_path(@doodle) %> |
+<%= link_to 'Back', doodles_path %>

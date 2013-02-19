@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @pydwgn.name %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @pydwgn.value %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @pydwgn.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @pydwgn.longitude %>
+</p>
+
+<p>
+  <b>Ward:</b>
+  <%= @pydwgn.ward %>
+</p>
+
+
+<%= link_to 'Edit', edit_pydwgn_path(@pydwgn) %> |
+<%= link_to 'Back', pydwgns_path %>
