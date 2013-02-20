@@ -12,21 +12,26 @@ def get_json_object(url):
 	return j
 
 # get the street name from a given lat-long
-def getStreetName((lat, lng)):
+def getStreetAddress((lat, lng)):
 	lat = str(lat)
 	lng = str(lng)
 	url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false"
 	json = get_json_object(url)
 	street_name = json['results'][0]['address_components'][1]['long_name']
-	return street_name
+	postcode = getPostcode(json)
+	return [street_name, postcode]
 
 def getLatLng(address):
 	address = re.sub(r"\s+", '+', address)
 	url = "http://maps.googleapis.com/maps/api/geocode/json?address="+address+",+edinburgh&sensor=false"
 	json = get_json_object(url)
-	latlng = json['results'][0]['geometry']['location']
-	
+	latlng = json['results'][0]['geometry']['location']	
 	return (latlng['lat'], latlng['lng'])
+
+# get the postcode from a provided lat, lng json
+def getPostcode(json):	
+	postcode = json['results'][0]['address_components'][5]['long_name']	
+	return postcode
 
 # parses in a file with addresses and saves in a csv with the lattitude points.
 def parse_addresses(fileload, filesave, addressIndex):
@@ -36,6 +41,7 @@ def parse_addresses(fileload, filesave, addressIndex):
 	fileWriter = csv.writer(file , delimiter=',',quotechar='|', 	quoting=csv.QUOTE_MINIMAL)
 	for row in primaryschool:
 		address = row[addressIndex]
+		print address
 
 		if address == "": #remove first blank line
 			continue
@@ -46,10 +52,10 @@ def parse_addresses(fileload, filesave, addressIndex):
 			
 
 		point = getLatLng(address)
-		#street_name = getStreetName(point)
-		fileWriter.writerow(row + [point[0], point[1]])
+		street_name = getStreetName(point)
+		fileWriter.writerow(street_name + [point[0], point[1]])
 		print point #, street_name
-		sleep(0.2)
+		sleep(0.3)
 	
 
 # parses specific schools file. Takes out all information but roll, address and aggregates latt,lng
@@ -75,7 +81,7 @@ def parse_schools():
 			
 
 		point = getLatLng(address)
-		street_name = getStreetName(point)
+		street_name = getStreetAddress(point)
 		print point, street_name
 		fileWriter.writerow([postcode, roll, address, point[0], point[1]])
 		sleep(0.4)
