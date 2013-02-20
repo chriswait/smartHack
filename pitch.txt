@@ -1,0 +1,36 @@
+PROBLEM: Councils and communities want to make their city a cleaner place to
+live, but only have finite resources. They need to know how to focus their
+attention so that they can achieve the maximum benefit for their efforts
+
+WHAT CAN THEY USE TO FIND OUT WHERE TO FOCUS?
+---------------------------------------------
+
+What places are statistically worse off along certain vectors?
+    - Info on cleanliness factors, litter, grafitti, vandalism etc.
+    - If we could get a visualisation ward by ward which showed not only how bad
+      each of these places were for this, but also what the general trend is (is
+      a place getting more full of grafitti or not?) Then the council could
+      target areas of critical concern
+
+What do the communities actually want
+    - Other than talking sheer numbers, there might be concern in a certain area
+      for particular trouble spots. The example we will focus on is graffitti.
+      Not all graffitti is created equal. If the council doesnt have the
+      resources to get rid of every mark on every building we need to find out
+      which pieces of graffiti a place particularly wants rid of. What might
+      influence this? If a piece of graffiti is deemed particularly insensitive
+      (e.g a swastika or a giant penis) if a piece of graffiti is in a visible
+      area or close to a local school where young people may see it. Sometimes
+      councils have even found in the past that certain pieces of graffiti
+      actually become part of the community and that people become aggravated
+      when they are blanket removed.
+
+We propose a system where citizens can upload geolocated pictures of graffiti
+around their area which can be ranked by proximity to high populous schools,
+flagged for particular offensiveness, and voted on whether it is really a
+concern of the people or not (I want this removed / This doesnt bother me).
+
+A summary of the most aggravating pieces of graffiti along with broader heatmap
+info of which wards are being hit the most (census style data and uploads of
+graffiti in real time) would allow councils to focus their effors in a more
+productive way
