@@ -30,28 +30,29 @@ def getLatLng(address):
 
 # parses in a file with addresses and saves in a csv with the lattitude points.
 def parse_addresses(fileload, filesave, addressIndex):
-	primaryschool = csv.reader(open(fileload))
+	primaryschool = csv.reader(open(fileload, "rU"))
 
 	file = open(filesave, "wb")
 	fileWriter = csv.writer(file , delimiter=',',quotechar='|', 	quoting=csv.QUOTE_MINIMAL)
 	for row in primaryschool:
 		address = row[addressIndex]
 
-		if postcode == "": # make the first line blank
+		if address == "": #remove first blank line
 			continue
 
 		if "Add" in address:
-			fileWriter.writerow([address,"LANG", "LNG"])
+			fileWriter.writerow(row + ["LATT", "LNG"])
 			continue
 			
 
 		point = getLatLng(address)
-		street_name = getStreetName(point)
-		fileWriter.writerow([address, point[0], point[1]])
-		print point, street_name
-		sleep(0.2)
+		#street_name = getStreetName(point)
+		fileWriter.writerow(row + [point[0], point[1]])
+		print point #, street_name
+		sleep(0.3)
 	
 
+# parses specific schools file. Takes out all information but roll, address and aggregates latt,lng
 def parse_schools():
 	myfilepath = "edinburgh-primary-schools.csv"
 	primaryschool = csv.reader(open(myfilepath))
@@ -66,11 +67,10 @@ def parse_schools():
 		address = row[1]
 
 		if postcode == "": # make the first line blank
-			fileWriter.writerow([postcode, roll, address, postcode, postcode])
 			continue
 
 		if "Add" in address:
-			fileWriter.writerow([postcode, roll, address,"LANG", "LNG"])
+			fileWriter.writerow(row + ["LATT", "LNG"])
 			continue
 			
 
@@ -78,10 +78,11 @@ def parse_schools():
 		street_name = getStreetName(point)
 		print point, street_name
 		fileWriter.writerow([postcode, roll, address, point[0], point[1]])
-		sleep(0.2)
+		sleep(0.4)
 
 
 def main():
+	print "Run parse_addresses with the file to load, file to save and index of the address. Else runs parse_schools"
 	parse_schools()
 
 
