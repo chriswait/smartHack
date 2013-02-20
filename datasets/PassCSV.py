@@ -1,0 +1,84 @@
+import csv
+import re
+from urllib import urlopen
+import urllib2
+import json
+from time import sleep
+
+# gets the lat/long from a provided address
+def getLocationInfo(address):
+	url = "http://maps.googleapis.com/maps/api/geocode/json?address="+address+",+edinburgh&sensor=false"
+	data = urllib2.urlopen(url)
+
+	j = json.load(data)
+	#if len(j['results']) == 0:
+		#print j
+	a = j['results'][0]['geometry']['location']
+	
+	return (a['lat'], a['lng'])
+
+# gets an address from a provided lat long
+def getAddressInformation((lat, lng)):
+	lat = str(lat)
+	lng = str(lng)
+	url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false"
+	data = urllib2.urlopen(url)
+	j = json.load(data)
+	#getPostcode(j)
+	getStreetname(j)
+	#print j
+
+# extracts the postcode from a json object
+def getPostcode(json):
+	a = json['results'][0]['address_components'][5]['long_name']
+	print a
+
+def getStreetname(json):
+	a = json['results'][0]['address_components'][1]['long_name']
+	print a
+	
+
+def main():
+	myfilepath = "edinburgh-primary-schools.csv"
+	primaryschool = csv.reader(open(myfilepath))
+
+	file = open("test.csv", "wb")
+	fileWriter = csv.writer(file , delimiter=',',quotechar='|', 	quoting=csv.QUOTE_MINIMAL)
+
+
+	for row in primaryschool:
+		postcode = row[3]
+		roll = row[5]
+		address = row[1]
+     		address = re.sub(r"\s+", '+', address)
+
+		if postcode == "": # make the first line blank
+			fileWriter.writerow([postcode, roll, postcode, postcode])
+			continue
+
+		if "Add" in address:
+			fileWriter.writerow([postcode, roll, "LANG", "LNG"])
+			continue
+			
+
+		point = getLocationInfo(address)
+		getAddressInformation(point)
+		fileWriter.writerow([postcode, roll, point[0], point[1]])
+		sleep(0.2)
+		
+
+
+if __name__ == "__main__":
+    main()
+
+	
+
+#print extracted_info
+
+
+
+	
+	
+
+
+
