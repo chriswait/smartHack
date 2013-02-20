@@ -1,4 +1,10 @@
 Ilwhack::Application.routes.draw do
+  resources :ward_values
+
+
+  resources :street_values
+
+
   resources :comments
   resources :votes
   resources :doodles
