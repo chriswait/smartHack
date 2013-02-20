@@ -2771,3 +2771,50 @@ Served asset /wards.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-02-20 01:16:58 +0000
 Served asset /application.js - 304 Not Modified (7ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (11.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateWards (20130219220528)
+Migrating to CreateStreets (20130219220559)
+Migrating to CreatePydwgns (20130219220643)
+Migrating to CreateVotes (20130219220706)
+Migrating to CreateDoodles (20130219221316)
+Migrating to CreateComments (20130219221350)
+Migrating to AddDoodleFileFields (20130219222020)
+Migrating to AddAbilityForMultipleStreetAndWardEntries (20130220160521)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (102.7ms)[0m  [1mALTER TABLE "streets" DROP "dog_foul"[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "streets" DROP "vandalism"
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "streets" DROP "graffiti"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "streets" DROP "weeds"
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "streets" DROP "detritus"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "streets" DROP "fly_posting"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "streets" DROP "bin_count"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "streets" DROP "number_overflowing"
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "streets" DROP "smoking"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "streets" DROP "drinks"
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "streets" DROP "confectionary"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "streets" DROP "fast_food"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "streets" DROP "pedestrian_individual"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "streets" DROP "business"
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "streets" DROP "domestic"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "streets" DROP "construction"
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "streets" DROP "animal_faeces"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "streets" DROP "other"
+  [1m[36m (30.8ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130220160521')[0m
+  [1m[35m (22.3ms)[0m  COMMIT
+Migrating to CreateStreetValues (20130220161445)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (222.7ms)[0m  CREATE TABLE "street_values" ("id" serial primary key, "recorded" timestamp, "street_id" integer, "dog_foul" float, "vandalism" float, "graffiti" float, "weeds" float, "detritus" float, "fly_posting" float, "bin_count" float, "number_overflowing" float, "smoking" float, "drinks" float, "confectionary" float, "fast_food" float, "pedestrian_individual" float, "business" float, "domestic" float, "construction" float, "animal_faeces" float, "other" float, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (23.4ms)[0m  [1mCREATE INDEX "index_street_values_on_street_id" ON "street_values" ("street_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130220161445')
+  [1m[36m (13.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateWardValues (20130220161645)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (39.3ms)[0m  [1mCREATE TABLE "ward_values" ("id" serial primary key, "recorded" timestamp, "ward_id" integer, "value" float, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (39.1ms)[0m  CREATE INDEX "index_ward_values_on_ward_id" ON "ward_values" ("ward_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130220161645')[0m
+  [1m[35m (7.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m

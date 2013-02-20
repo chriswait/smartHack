@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219222020) do
+ActiveRecord::Schema.define(:version => 20130220161645) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
@@ -49,11 +49,9 @@ ActiveRecord::Schema.define(:version => 20130219222020) do
 
   add_index "pydwgns", ["ward_id"], :name => "index_pydwgns_on_ward_id"
 
-  create_table "streets", :force => true do |t|
-    t.string   "name"
-    t.string   "postcode"
-    t.float    "latitude"
-    t.float    "longitude"
+  create_table "street_values", :force => true do |t|
+    t.datetime "recorded"
+    t.integer  "street_id"
     t.float    "dog_foul"
     t.float    "vandalism"
     t.float    "graffiti"
@@ -72,9 +70,20 @@ ActiveRecord::Schema.define(:version => 20130219222020) do
     t.float    "construction"
     t.float    "animal_faeces"
     t.float    "other"
-    t.integer  "ward_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+  end
+
+  add_index "street_values", ["street_id"], :name => "index_street_values_on_street_id"
+
+  create_table "streets", :force => true do |t|
+    t.string   "name"
+    t.string   "postcode"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "ward_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "streets", ["ward_id"], :name => "index_streets_on_ward_id"
@@ -87,6 +96,16 @@ ActiveRecord::Schema.define(:version => 20130219222020) do
   end
 
   add_index "votes", ["doodle_id"], :name => "index_votes_on_doodle_id"
+
+  create_table "ward_values", :force => true do |t|
+    t.datetime "recorded"
+    t.integer  "ward_id"
+    t.float    "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ward_values", ["ward_id"], :name => "index_ward_values_on_ward_id"
 
   create_table "wards", :force => true do |t|
     t.string   "name"
