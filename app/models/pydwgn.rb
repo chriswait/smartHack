@@ -1,4 +1,4 @@
 class Pydwgn < ActiveRecord::Base
   belongs_to :ward
-  attr_accessible :latitude, :longitude, :name, :value
+  attr_accessible :ward_id, :latitude, :longitude, :name, :value
 end

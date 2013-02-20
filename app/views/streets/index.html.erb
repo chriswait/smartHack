@@ -6,24 +6,7 @@
     <th>Postcode</th>
     <th>Latitude</th>
     <th>Longitude</th>
-    <th>Dog foul</th>
-    <th>Vandalism</th>
     <th>Graffiti</th>
-    <th>Weeds</th>
-    <th>Detritus</th>
-    <th>Fly posting</th>
-    <th>Bin count</th>
-    <th>Number overflowing</th>
-    <th>Smoking</th>
-    <th>Drinks</th>
-    <th>Confectionary</th>
-    <th>Fast food</th>
-    <th>Pedestrian individual</th>
-    <th>Business</th>
-    <th>Domestic</th>
-    <th>Construction</th>
-    <th>Animal faeces</th>
-    <th>Other</th>
     <th>Ward</th>
     <th></th>
     <th></th>
@@ -36,25 +19,8 @@
     <td><%= street.postcode %></td>
     <td><%= street.latitude %></td>
     <td><%= street.longitude %></td>
-    <td><%= street.dog_foul %></td>
-    <td><%= street.vandalism %></td>
     <td><%= street.graffiti %></td>
-    <td><%= street.weeds %></td>
-    <td><%= street.detritus %></td>
-    <td><%= street.fly_posting %></td>
-    <td><%= street.bin_count %></td>
-    <td><%= street.number_overflowing %></td>
-    <td><%= street.smoking %></td>
-    <td><%= street.drinks %></td>
-    <td><%= street.confectionary %></td>
-    <td><%= street.fast_food %></td>
-    <td><%= street.pedestrian_individual %></td>
-    <td><%= street.business %></td>
-    <td><%= street.domestic %></td>
-    <td><%= street.construction %></td>
-    <td><%= street.animal_faeces %></td>
-    <td><%= street.other %></td>
-    <td><%= street.ward %></td>
+    <td><%= street.ward.name %></td>
     <td><%= link_to 'Show', street %></td>
     <td><%= link_to 'Edit', edit_street_path(street) %></td>
     <td><%= link_to 'Destroy', street, method: :delete, data: { confirm: 'Are you sure?' } %></td>

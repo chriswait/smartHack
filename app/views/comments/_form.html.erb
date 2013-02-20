@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :doodle %><br />
-    <%= f.text_field :doodle %>
+    <%= f.collection_select :doodle_id, Doodle.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

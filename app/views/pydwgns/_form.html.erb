@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :ward %><br />
-    <%= f.text_field :ward %>
+    <%= f.collection_select :ward_id, Ward.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

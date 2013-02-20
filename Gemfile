@@ -31,8 +31,8 @@ gem 'haml'
 
 # For Amazon Web Services - Simple Storage Service, via paperclip
 gem 'paperclip'
-gem 'aws-sdk'
-
+#gem 'aws-sdk'
+gem 'paperclip-dropbox'
 
 # To use debugger
 # gem 'debugger'
