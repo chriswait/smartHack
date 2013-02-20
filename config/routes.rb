@@ -56,7 +56,7 @@ Ilwhack::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'pydwgns#index'
+  root :to => 'doodles#index'
 
   # See how all your routes lay out with "rake routes"
 
