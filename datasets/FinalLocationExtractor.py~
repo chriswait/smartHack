@@ -1,0 +1,123 @@
+import csv
+import re
+from urllib import urlopen
+import urllib2
+import json
+from time import sleep
+
+def getJsonObject(url):
+	data = urllib2.urlopen(url)
+	j = json.load(data)
+	return j
+
+# not really used or needed atm since all addresses are provided.
+def getStreetAddress((lat, lng)):
+	lat = str(lat)
+	lng = str(lng)
+	url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false"
+	json = getJsonObject(url)
+	street_name = json['results'][0]['address_components']
+	types = ['route', 'bus_station']
+	street_name = filter(lambda x: len(set(x['types']).intersection(types)), street_name)[0]['long_name']
+	postcode = findPostcode(json)
+	if postcode == None:
+		print street_name
+		postcode = "FAIL"
+	return [street_name, postcode]
+
+
+# returns an object with the original address, the postcode, the ward and the latlng.
+def getAllInformation(address):
+	address2 = re.sub(r"\s+", '+', address)
+	url = "http://maps.googleapis.com/maps/api/geocode/json?address="+address2+",+edinburgh&sensor=false"
+	json = getJsonObject(url)
+	latlng = json['results'][0]['geometry']['location']
+	postcode = findPostcode(json)
+	if postcode == "FAIL":
+		return "FAIL"
+	ward = getWard(postcode)
+	return [address, postcode, ward, latlng[0], latlng[1]]
+
+# merci Chris.
+def getWard(postcode):
+	postcode = string.replace(postcode, " ", "+")
+
+	url = "https://citydev-portal.edinburgh.gov.uk/ward/search?postcode=%s&postcode_submit=submit" % postcode
+	html = urllib2.urlopen(url).read()
+
+	regex = re.compile(r"WardA\d\d")
+	search = regex.search(html)
+	wardID = int(search.group()[5:])
+	print "Ward ", wardID, " Postcode: ", postcode
+	return wardID
+
+# searches a given json object for the postal_code.
+def findPostcode(json):
+	json = json['results']
+	object_types = ["postal_code", "street_address"]
+	objects = [x for x in json if len(set(x['types']).intersection(object_types))]
+
+	for components in objects:
+		if(components.has_key("address_components")):
+			geonames = filter(lambda x: x['types'] == ['postal_code'], components["address_components"])	
+			for geoname in geonames:
+				postcode = geoname['long_name']
+				if 'EH' in postcode:
+					return postcode
+	return "FAIL"
+
+# should aggregate on the rows, the lat/longs, postcodes and wards
+def aggregateAddressRows(parseFile, saveFile, addressIndex):
+	rows = csv.reader(open(parseFile, "rU"))
+
+	file = open(saveFile, "wb")
+	fileWriter = csv.writer(file , delimiter=',',quotechar='|', 	quoting=csv.QUOTE_MINIMAL)
+	for row in rows:
+		print row
+		address = row[addressIndex]
+
+		if address == "" or "Add" in address: #remove first blank line
+			continue	
+
+		info = getAllInformation(address)
+
+		if info == "FAIL" :
+			print "Failed on ", address
+		else:
+			fileWriter.writerow(row + info[1:])
+			print info
+
+		sleep(0.3)
+	
+def parseSchools():
+	myfilepath = "edinburgh-primary-schools.csv"
+	primaryschool = csv.reader(open(myfilepath))
+
+	file = open("parsed_edinburgh_schools.csv", "wb")
+	fileWriter = csv.writer(file , delimiter=',',quotechar='|', quoting=csv.QUOTE_MINIMAL)
+
+
+	for row in primaryschool:
+		postcode = row[3]
+		roll = row[5]
+		address = row[1]
+
+		if address == "" or "Add" in address: #remove first blank line
+			continue	
+
+		info = getAllInformation(address)
+
+		if info == "FAIL" :
+			print "Failed on ", address
+		
+		fileWriter.writerow([address, postcode, roll, info[3], info[4]])
+		print info
+
+def main():
+	aggregateAddressRows("streetlatlng.csv", "streetpostcode.csv", 0)
+
+
+if __name__ == "__main__":
+    main()	
+		
+		
