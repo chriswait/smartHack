@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Recorded:</b>
+  <%= @ward_value.recorded %>
+</p>
+
+<p>
+  <b>Ward:</b>
+  <%= @ward_value.ward %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @ward_value.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_ward_value_path(@ward_value) %> |
+<%= link_to 'Back', ward_values_path %>

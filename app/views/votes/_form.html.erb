@@ -12,12 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :isVandilism %><br />
-    <%= f.text_field :isVandilism %>
+    <%= f.label :is_vandalism %><br />
+    <%= f.radio_button :is_vandalism, "1" %>
+  	<%= label :is_vandalism, 'Yes' %>
+    <%= f.radio_button :is_vandalism, "0" %>
+  	<%= label :is_vandalism, 'No' %>
   </div>
   <div class="field">
     <%= f.label :doodle %><br />
-    <%= f.collection_select :doodle_id, Doodle.all, :id, :name %>
+    <%= f.collection_select :doodle_id, Doodle.all, :id, :id %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,0 +1,29 @@
+<%= form_for(@ward_value) do |f| %>
+  <% if @ward_value.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ward_value.errors.count, "error") %> prohibited this ward_value from being saved:</h2>
+
+      <ul>
+      <% @ward_value.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :recorded %><br />
+    <%= f.datetime_select :recorded %>
+  </div>
+  <div class="field">
+    <%= f.label :ward %><br />
+    <%= f.text_field :ward %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
