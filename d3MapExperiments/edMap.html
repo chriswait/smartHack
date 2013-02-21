@@ -7,14 +7,26 @@
         <link rel="stylesheet" href="mapExp.css" />
         <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
         <script src = "../datasets/wardBoundaries/geoJsonWards.js"> </script>
+        <script src='jquery-1.9.1.min.js'> </script>
+        <link rel='stylesheet' href='jquery-ui-1.10.1.custom/css/smoothness/jquery-ui-1.10.1.custom.css' />
+        <script src='jquery-ui-1.10.1.custom/js/jquery-ui-1.10.1.custom.min.js'> </script>
+
 
     </head>
     
     <body>
+        <h2> Edinburgh Ward Graffiti Visualiser </h2>
         <div id = "map"> </div> 
+        <div id = "options-box"> 
+            <input type="radio" name="visCat" value="armedMilitia" checked = "checked">Armed Militia</input> <br>
+            <input type="radio" name="visCat" value="morale"> Civilian Morale</input> <br>
+            <input type="radio" name="visCat" value="dog poo"> Dog Poo</input> <br>
+        </div>
+        <div id = "timeSlide"> 
+        </div>
         <script>
             // create a map in the "map" div, set the view to a given place and zoom
-            var map = L.map('map').setView([55.95, -3.2200], 12);
+            var map = L.map('map').setView([55.95, -3.2200], 11);
 
             // add an OpenStreetMap tile layer
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -22,25 +34,33 @@
             }).addTo(map);
 
             var geoJsonDat
+            //Slider gets continuous colour value by interpolating between states at two time steps
+            var prevWardStates = [1,2,2,1,2,1,2,2,2,1,1,2,1,2,1,2,2];
+            var nextWardStates = [2,3,3,2,3,2,3,3,4,2,2,4,2,3,2,4,3]; //At the moment this data implies everywhere is getting worse :P
 
-            function resetHighlight(e) {
-                geoJsonDat.resetStyle(e.target);
+            //Colours start at the previous state
+            var currentColours = [];
+            for(i = 0; i < prevWardStates.length; i++){
+                currentColours[i] = prevWardStates[i];
             }
 
-            function pickColour(d){
-                if(d > 20){
-                    return "white";
-                }
-                else if(d > 10){
-                    return "blue";
-                }
-                else if (d > 5){
-                    return "red";
-                }
-                else{
-                    return "green";
-                }
+            function resetHighlight(e) {
+                var layer = e.target;
+                layer.setStyle(style(layer.feature));
             };
+
+            //Make the assumtion that state values go between 1 and 4
+            function pickColour(idTag){
+                var heatValue = currentColours[idTag - 1];
+                return "#" + componentToHex(heatValue * (255.0/4)) + "00" + componentToHex((4 - heatValue) * (255.0 / 4));
+
+            };
+
+            function componentToHex(c){
+                var intVal = parseInt(c);
+                var hex = intVal.toString(16);
+                return hex.length == 1 ? "0" + hex : hex;
+            }
 
             function style(feature) {
                 return {
@@ -48,7 +68,7 @@
                     opacity: 1,
                     color: 'white',
                     dashArray: '3',
-                    fillOpacity: 0.3,
+                    fillOpacity: 0.5,
                     fillColor: pickColour(feature.properties.id)
                 };
             }
@@ -88,11 +108,30 @@
 
             var oneLayer;
 
-            geoJsonDat.eachLayer(function (layer) {
-                oneLayer = layer;
-            });
 
-            oneLayer.feature.properties.id = 23;
+
+            function changeTime() {
+                var time = $( "#timeSlide" ).slider( "value" )
+                for(i = 0 ; i < currentColours.length; i++){
+                    currentColours[i] = (1 - time) * prevWardStates[i] + (time) * nextWardStates[i];
+                }
+                geoJsonDat.eachLayer(function (layer) {
+                    layer.setStyle(style(layer.feature));
+                });
+            }
+
+            $(function() {
+                $( "#timeSlide" ).slider({
+                    orientation: "horizontal",
+                    range: "min",
+                    max: 1,
+                    value: 0,
+                    slide: changeTime,
+                    change: changeTime
+                });
+                
+                $("#timeSlide").slider("option", "step", 0.001);
+            });
 
 
         </script>
