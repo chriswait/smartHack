@@ -86,6 +86,18 @@ def parse_addresses(fileload, filesave, addressIndex):
 			print point, street_name
 
 		sleep(0.3)
+
+def getWard(postcode):
+	postcode = string.replace(postcode, " ", "+")
+
+	url = "https://citydev-portal.edinburgh.gov.uk/ward/search?postcode=%s&postcode_submit=submit" % postcode
+	html = urllib2.urlopen(url).read()
+
+	regex = re.compile(r"WardA\d\d")
+	search = regex.search(html)
+	wardID = int(search.group()[5:])
+	print "Ward ", wardID, " Postcode: ", postcode
+	return wardID
 	
 
 # parses specific schools file. Takes out all information but roll, address and aggregates latt,lng
