@@ -5,9 +5,6 @@ import urllib2
 import json
 from time import sleep
 
-#55.9567507, -3.16942
-#55.9083639, -3.1264931 no postcode
-
 # gets a json object from a url
 def get_json_object(url):
 	data = urllib2.urlopen(url)
@@ -21,11 +18,12 @@ def getStreetAddress((lat, lng)):
 	url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false"
 	json = get_json_object(url)
 	street_name = json['results'][0]['address_components']
-	street_name = filterComponent(street_name, ['route'])[0]['long_name']
-	postcode = getPostcode(json)
+	types = ['route', 'bus_station']
+	street_name = filter(lambda x: len(set(x['types']).intersection(types)), street_name)[0]['long_name']
+	postcode = findPostcode(json)
 	if postcode == None:
 		print street_name
-		postcode = "fFAILFAILFAILFAIL"
+		postcode = "FAIL"
 	return [street_name, postcode]
 
 def getLatLng(address):
@@ -35,11 +33,6 @@ def getLatLng(address):
 	latlng = json['results'][0]['geometry']['location']	
 	return (latlng['lat'], latlng['lng'])
 
-# get the postcode from a provided lat, lng json
-def getPostcode(json):	
-	postcode = findPostcode(json)
-	return postcode
-
 # first level is a dictionary, get results
 # second is a list
 # third is a dictionary of components
@@ -48,19 +41,16 @@ def getPostcode(json):
 def findPostcode(json):
 	json = json['results']
 	object_types = ["postal_code", "street_address"]
-	# returns a dictionary of components
 	objects = [x for x in json if len(set(x['types']).intersection(object_types))]
 
 	for components in objects:
-		for component in components:
+		for component in components: #dictionary of components
 			if component == "address_components":
-				#print "component ", component
 				properties = components[component]
 				geonames = filterComponent(properties, ["postal_code"])	
 				geonames = [x for x in geonames]	
 				for geoname in geonames:
 					postcode = geoname['long_name']
-					#print "Geonames", geoname
 					if 'EH' in postcode:
 						return postcode
 		
@@ -69,6 +59,7 @@ def findPostcode(json):
 def filterComponent(data, types):
 	geonames = filter(lambda x: x['types'] == types, data)
 	return geonames
+
 
 # parses in a file with addresses and saves in a csv with the lattitude points.
 def parse_addresses(fileload, filesave, addressIndex):
@@ -90,8 +81,10 @@ def parse_addresses(fileload, filesave, addressIndex):
 
 		point = getLatLng(address)
 		street_name = getStreetAddress(point)
-		fileWriter.writerow(street_name + [point[0], point[1]])
-		print point, street_name
+		if not street_name[0] == "FAIL" :
+			fileWriter.writerow(street_name + [point[0], point[1]])
+			print point, street_name
+
 		sleep(0.3)
 	
 
