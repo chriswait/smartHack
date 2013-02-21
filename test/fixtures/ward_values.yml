@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  recorded: 2013-02-20 16:16:45
+  ward: 
+  value: 1.5
+
+two:
+  recorded: 2013-02-20 16:16:45
+  ward: 
+  value: 1.5
