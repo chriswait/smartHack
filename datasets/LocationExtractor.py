@@ -5,6 +5,9 @@ import urllib2
 import json
 from time import sleep
 
+#55.9567507, -3.16942
+#55.9083639, -3.1264931 no postcode
+
 # gets a json object from a url
 def get_json_object(url):
 	data = urllib2.urlopen(url)
@@ -17,8 +20,12 @@ def getStreetAddress((lat, lng)):
 	lng = str(lng)
 	url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false"
 	json = get_json_object(url)
-	street_name = json['results'][0]['address_components'][1]['long_name']
+	street_name = json['results'][0]['address_components']
+	street_name = filterComponent(street_name, ['route'])[0]['long_name']
 	postcode = getPostcode(json)
+	if postcode == None:
+		print street_name
+		postcode = "fFAILFAILFAILFAIL"
 	return [street_name, postcode]
 
 def getLatLng(address):
@@ -30,8 +37,38 @@ def getLatLng(address):
 
 # get the postcode from a provided lat, lng json
 def getPostcode(json):	
-	postcode = json['results'][0]['address_components'][5]['long_name']	
+	postcode = findPostcode(json)
 	return postcode
+
+# first level is a dictionary, get results
+# second is a list
+# third is a dictionary of components
+# fouth is a list of dictionarys with component properties.
+
+def findPostcode(json):
+	json = json['results']
+	object_types = ["postal_code", "street_address"]
+	# returns a dictionary of components
+	objects = [x for x in json if len(set(x['types']).intersection(object_types))]
+
+	for components in objects:
+		for component in components:
+			if component == "address_components":
+				#print "component ", component
+				properties = components[component]
+				geonames = filterComponent(properties, ["postal_code"])	
+				geonames = [x for x in geonames]	
+				for geoname in geonames:
+					postcode = geoname['long_name']
+					#print "Geonames", geoname
+					if 'EH' in postcode:
+						return postcode
+		
+		
+
+def filterComponent(data, types):
+	geonames = filter(lambda x: x['types'] == types, data)
+	return geonames
 
 # parses in a file with addresses and saves in a csv with the lattitude points.
 def parse_addresses(fileload, filesave, addressIndex):
@@ -52,9 +89,9 @@ def parse_addresses(fileload, filesave, addressIndex):
 			
 
 		point = getLatLng(address)
-		street_name = getStreetName(point)
+		street_name = getStreetAddress(point)
 		fileWriter.writerow(street_name + [point[0], point[1]])
-		print point, street_name[0], street_name[1]
+		print point, street_name
 		sleep(0.3)
 	
 
@@ -89,7 +126,8 @@ def parse_schools():
 
 def main():
 	print "Run parse_addresses with the file to load, file to save and index of the address. Else runs parse_schools"
-	parse_schools()
+	#parse_schools()
+	parse_addresses("streetlatlng.csv", "streetpostcode.csv", 0)
 
 
 if __name__ == "__main__":
