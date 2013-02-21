@@ -10,6 +10,34 @@ def getJsonObject(url):
 	j = json.load(data)
 	return j
 
+# not really used or needed atm since all addresses are provided.
+def getStreetAddress((lat, lng)):
+	lat = str(lat)
+	lng = str(lng)
+	url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false"
+	json = getJsonObject(url)
+	street_name = json['results'][0]['address_components']
+	types = ['route', 'bus_station']
+	street_name = filter(lambda x: len(set(x['types']).intersection(types)), street_name)[0]['long_name']
+	postcode = findPostcode(json)
+	if postcode == None:
+		print street_name
+		postcode = "FAIL"
+	return [street_name, postcode]
+
+
+# returns an object with the original address, the postcode, the ward and the latlng.
+def getAllInformation(address):
+	address2 = re.sub(r"\s+", '+', address)
+	url = "http://maps.googleapis.com/maps/api/geocode/json?address="+address2+",+edinburgh&sensor=false"
+	json = getJsonObject(url)
+	latlng = json['results'][0]['geometry']['location']
+	postcode = findPostcode(json)
+	if postcode == "FAIL":
+		return "FAIL"
+	ward = getWard(postcode)
+	return [address, postcode, ward, latlng[0], latlng[1]]
+
 # merci Chris.
 def getWard(postcode):
 	postcode = string.replace(postcode, " ", "+")
@@ -38,35 +66,6 @@ def findPostcode(json):
 					return postcode
 	return "FAIL"
 
-# not really used or needed atm since all addresses are provided.
-def getStreetAddress((lat, lng)):
-	lat = str(lat)
-	lng = str(lng)
-	url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false"
-	json = get_json_object(url)
-	street_name = json['results'][0]['address_components']
-	types = ['route', 'bus_station']
-	street_name = filter(lambda x: len(set(x['types']).intersection(types)), street_name)[0]['long_name']
-	postcode = findPostcode(json)
-	if postcode == None:
-		print street_name
-		postcode = "FAIL"
-	return [street_name, postcode]
-
-
-# returns an object with the original address, the postcode, the ward and the latlng.
-def getAllInformation(address):
-	address2 = re.sub(r"\s+", '+', address)
-	url = "http://maps.googleapis.com/maps/api/geocode/json?address="+address2+",+edinburgh&sensor=false"
-	json = get_json_object(url)
-	latlng = json['results'][0]['geometry']['location']
-	postcode = findPostCode(json)
-	if postcode == "FAIL":
-		print "FAIL on ", address
-		return "FAIL"
-	ward = getWard(postcode)
-	return [address, postcode, ward, latlng[0], latlng[1]]
-
 # should aggregate on the rows, the lat/longs, postcodes and wards
 def aggregateAddressRows(parseFile, saveFile, addressIndex):
 	rows = csv.reader(open(parseFile, "rU"))
@@ -74,7 +73,7 @@ def aggregateAddressRows(parseFile, saveFile, addressIndex):
 	file = open(saveFile, "wb")
 	fileWriter = csv.writer(file , delimiter=',',quotechar='|', 	quoting=csv.QUOTE_MINIMAL)
 	for row in rows:
-
+		print row
 		address = row[addressIndex]
 
 		if address == "" or "Add" in address: #remove first blank line
@@ -84,9 +83,9 @@ def aggregateAddressRows(parseFile, saveFile, addressIndex):
 
 		if info == "FAIL" :
 			print "Failed on ", address
-		
-		fileWriter.writerow(row + info[1:])
-		print info
+		else:
+			fileWriter.writerow(row + info[1:])
+			print info
 
 		sleep(0.3)
 	
@@ -112,6 +111,13 @@ def parseSchools():
 			print "Failed on ", address
 		
 		fileWriter.writerow([address, postcode, roll, info[3], info[4]])
-		print info	
+		print info
+
+def main():
+	aggregateAddressRows("streetlatlng.csv", "streetpostcode.csv", 0)
+
+
+if __name__ == "__main__":
+    main()	
 		
 		
