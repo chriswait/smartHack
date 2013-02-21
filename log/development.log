@@ -3790,3 +3790,661 @@ Served asset /wards.js - 304 Not Modified (0ms)
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-02-20 16:37:23 +0000
 Served asset /application.js - 304 Not Modified (8ms)
 Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-02-21 14:58:43 +0000
+Connecting to database specified by database.yml
+Processing by DoodlesController#index as HTML
+  [1m[36mDoodle Load (35.6ms)[0m  [1mSELECT "doodles".* FROM "doodles" [0m
+  [1m[35mEXPLAIN (9.6ms)[0m  EXPLAIN SELECT "doodles".* FROM "doodles" 
+EXPLAIN for: SELECT "doodles".* FROM "doodles" 
+                         QUERY PLAN
+------------------------------------------------------------
+ Seq Scan on doodles  (cost=0.00..10.70 rows=70 width=1084)
+(1 row)
+
+Compiled geoJsonWardsMin.js  (44ms)  (pid 10931)
+  [1m[36mStreet Load (45.1ms)[0m  [1mSELECT "streets".* FROM "streets" WHERE "streets"."id" = 1 LIMIT 1[0m
+  Rendered doodles/index.html.erb within layouts/application (397.0ms)
+Completed 200 OK in 1478ms (Views: 765.0ms | ActiveRecord: 613.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /application.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /comments.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/doodles.css?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /doodles.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/pydwg_ns.css?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /pydwg_ns.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/street_values.css?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /street_values.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /comments.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/ward_values.js?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /ward_values.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /scaffolds.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/streets.css?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /streets.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/ward_values.css?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /ward_values.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/votes.css?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /votes.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/wards.css?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /wards.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/pydwg_ns.js?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /pydwg_ns.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/streets.js?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /streets.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/street_values.js?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /street_values.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/votes.js?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /votes.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/wards.js?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /wards.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /application.js - 304 Not Modified (25ms)
+
+
+Started GET "/assets/doodles.js?body=1" for 127.0.0.1 at 2013-02-21 14:58:46 +0000
+Served asset /doodles.js - 304 Not Modified (2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-02-21 14:59:46 +0000
+Connecting to database specified by database.yml
+Processing by DoodlesController#index as HTML
+  [1m[36mDoodle Load (0.4ms)[0m  [1mSELECT "doodles".* FROM "doodles" [0m
+  [1m[35mStreet Load (0.4ms)[0m  SELECT "streets".* FROM "streets" WHERE "streets"."id" = 1 LIMIT 1
+  Rendered doodles/index.html.erb within layouts/application (115.0ms)
+Completed 200 OK in 376ms (Views: 271.7ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /application.css - 304 Not Modified (15ms)
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /comments.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/doodles.css?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /doodles.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/pydwg_ns.css?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /pydwg_ns.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /scaffolds.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/street_values.css?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /street_values.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/streets.css?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /streets.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/votes.css?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /votes.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/ward_values.css?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /ward_values.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/wards.css?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /wards.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /comments.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/doodles.js?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /doodles.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/pydwg_ns.js?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /pydwg_ns.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/street_values.js?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /street_values.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/streets.js?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /streets.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/votes.js?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /votes.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/ward_values.js?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /ward_values.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/wards.js?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /wards.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-02-21 14:59:47 +0000
+Served asset /application.js - 304 Not Modified (53ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Processing by DoodlesController#index as HTML
+  [1m[36mDoodle Load (0.3ms)[0m  [1mSELECT "doodles".* FROM "doodles" [0m
+  [1m[35mStreet Load (0.3ms)[0m  SELECT "streets".* FROM "streets" WHERE "streets"."id" = 1 LIMIT 1
+  Rendered doodles/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 52ms (Views: 49.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /comments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/doodles.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /doodles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pydwg_ns.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /pydwg_ns.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /scaffolds.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/street_values.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /street_values.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/streets.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /streets.css - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Processing by DoodlesController#index as HTML
+  [1m[36mDoodle Load (0.2ms)[0m  [1mSELECT "doodles".* FROM "doodles" [0m
+  [1m[35mStreet Load (0.3ms)[0m  SELECT "streets".* FROM "streets" WHERE "streets"."id" = 1 LIMIT 1
+  Rendered doodles/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 48ms (Views: 47.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /comments.css - 200 OK (0ms)
+
+
+Started GET "/assets/doodles.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /doodles.css - 200 OK (0ms)
+
+
+Started GET "/assets/pydwg_ns.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /pydwg_ns.css - 200 OK (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /scaffolds.css - 200 OK (0ms)
+
+
+Started GET "/assets/street_values.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /street_values.css - 200 OK (0ms)
+
+
+Started GET "/assets/streets.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /streets.css - 200 OK (0ms)
+
+
+Started GET "/assets/votes.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /votes.css - 200 OK (0ms)
+
+
+Started GET "/assets/ward_values.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /ward_values.css - 200 OK (0ms)
+
+
+Started GET "/assets/wards.css?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /wards.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /jquery.js - 200 OK (1ms)
+
+
+Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /comments.js - 200 OK (0ms)
+
+
+Started GET "/assets/doodles.js?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /doodles.js - 200 OK (0ms)
+
+
+Started GET "/assets/pydwg_ns.js?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /pydwg_ns.js - 200 OK (0ms)
+
+
+Started GET "/assets/street_values.js?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /street_values.js - 200 OK (0ms)
+
+
+Started GET "/assets/streets.js?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /streets.js - 200 OK (0ms)
+
+
+Started GET "/assets/votes.js?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /votes.js - 200 OK (0ms)
+
+
+Started GET "/assets/wards.js?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /wards.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /application.js - 200 OK (6ms)
+
+
+Started GET "/assets/ward_values.js?body=1" for 127.0.0.1 at 2013-02-21 15:00:27 +0000
+Served asset /ward_values.js - 200 OK (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Processing by DoodlesController#index as HTML
+  [1m[36mDoodle Load (0.2ms)[0m  [1mSELECT "doodles".* FROM "doodles" [0m
+  [1m[35mStreet Load (0.3ms)[0m  SELECT "streets".* FROM "streets" WHERE "streets"."id" = 1 LIMIT 1
+  Rendered doodles/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 76ms (Views: 74.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /comments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/doodles.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /doodles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pydwg_ns.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /pydwg_ns.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/street_values.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /street_values.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/geoJsonWardsMin.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /geoJsonWardsMin.js - 200 OK (7ms)
+
+
+Started GET "/assets/wards.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /wards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/doodles.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /doodles.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Processing by DoodlesController#index as HTML
+  [1m[36mDoodle Load (0.2ms)[0m  [1mSELECT "doodles".* FROM "doodles" [0m
+  [1m[35mStreet Load (0.2ms)[0m  SELECT "streets".* FROM "streets" WHERE "streets"."id" = 1 LIMIT 1
+  Rendered doodles/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 83ms (Views: 81.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /comments.css - 200 OK (0ms)
+
+
+Started GET "/assets/doodles.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /doodles.css - 200 OK (0ms)
+
+
+Started GET "/assets/pydwg_ns.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /pydwg_ns.css - 200 OK (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /scaffolds.css - 200 OK (0ms)
+
+
+Started GET "/assets/street_values.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /street_values.css - 200 OK (0ms)
+
+
+Started GET "/assets/streets.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /streets.css - 200 OK (0ms)
+
+
+Started GET "/assets/votes.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /votes.css - 200 OK (1ms)
+
+
+Started GET "/assets/ward_values.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /ward_values.css - 200 OK (0ms)
+
+
+Started GET "/assets/wards.css?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /wards.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /jquery.js - 200 OK (1ms)
+
+
+Started GET "/assets/doodles.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /doodles.js - 200 OK (0ms)
+
+
+Started GET "/assets/pydwg_ns.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /pydwg_ns.js - 200 OK (0ms)
+
+
+Started GET "/assets/street_values.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /street_values.js - 200 OK (0ms)
+
+
+Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /comments.js - 200 OK (0ms)
+
+
+Started GET "/assets/streets.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /streets.js - 200 OK (0ms)
+
+
+Started GET "/assets/votes.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /votes.js - 200 OK (0ms)
+
+
+Started GET "/assets/ward_values.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /ward_values.js - 200 OK (0ms)
+
+
+Started GET "/assets/wards.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /wards.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /application.js - 200 OK (7ms)
+
+
+Started GET "/assets/geoJsonWardsMin.js?body=1" for 127.0.0.1 at 2013-02-21 15:08:35 +0000
+Served asset /geoJsonWardsMin.js - 200 OK (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Processing by DoodlesController#index as HTML
+  [1m[36mDoodle Load (0.2ms)[0m  [1mSELECT "doodles".* FROM "doodles" [0m
+  [1m[35mStreet Load (0.3ms)[0m  SELECT "streets".* FROM "streets" WHERE "streets"."id" = 1 LIMIT 1
+  Rendered doodles/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 45ms (Views: 44.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /comments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/doodles.css?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /doodles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pydwg_ns.css?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /pydwg_ns.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/street_values.css?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /street_values.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/streets.css?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /streets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/votes.css?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /votes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ward_values.css?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /ward_values.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/wards.css?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /wards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /comments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/doodles.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /doodles.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/street_values.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /street_values.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pydwg_ns.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /pydwg_ns.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/streets.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /streets.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/votes.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /votes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ward_values.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /ward_values.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/wards.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /wards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /application.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/geoJsonWardsMin.js?body=1" for 127.0.0.1 at 2013-02-21 15:20:38 +0000
+Served asset /geoJsonWardsMin.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-02-21 15:21:13 +0000
+Processing by DoodlesController#index as HTML
+  [1m[36mDoodle Load (0.2ms)[0m  [1mSELECT "doodles".* FROM "doodles" [0m
+  [1m[35mStreet Load (0.3ms)[0m  SELECT "streets".* FROM "streets" WHERE "streets"."id" = 1 LIMIT 1
+  Rendered doodles/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 90ms (Views: 88.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /comments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/doodles.css?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /doodles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pydwg_ns.css?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /pydwg_ns.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/street_values.css?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /street_values.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/streets.css?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /streets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/votes.css?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /votes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ward_values.css?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /ward_values.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/wards.css?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /wards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /comments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/doodles.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /doodles.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/pydwg_ns.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /pydwg_ns.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/street_values.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /street_values.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/streets.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /streets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/votes.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /votes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ward_values.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /ward_values.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/wards.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /wards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /application.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/geoJsonWardsMin.js?body=1" for 127.0.0.1 at 2013-02-21 15:21:14 +0000
+Served asset /geoJsonWardsMin.js - 304 Not Modified (0ms)
