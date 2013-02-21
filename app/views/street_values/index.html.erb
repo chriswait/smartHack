@@ -1,0 +1,61 @@
+<h1>Listing street_values</h1>
+
+<table>
+  <tr>
+    <th>Recorded</th>
+    <th>Street</th>
+    <th>Dog foul</th>
+    <th>Vandalism</th>
+    <th>Graffiti</th>
+    <th>Weeds</th>
+    <th>Detritus</th>
+    <th>Fly posting</th>
+    <th>Bin count</th>
+    <th>Number overflowing</th>
+    <th>Smoking</th>
+    <th>Drinks</th>
+    <th>Confectionary</th>
+    <th>Fast food</th>
+    <th>Pedestrian individual</th>
+    <th>Business</th>
+    <th>Domestic</th>
+    <th>Construction</th>
+    <th>Animal faeces</th>
+    <th>Other</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @street_values.each do |street_value| %>
+  <tr>
+    <td><%= street_value.recorded %></td>
+    <td><%= street_value.street %></td>
+    <td><%= street_value.dog_foul %></td>
+    <td><%= street_value.vandalism %></td>
+    <td><%= street_value.graffiti %></td>
+    <td><%= street_value.weeds %></td>
+    <td><%= street_value.detritus %></td>
+    <td><%= street_value.fly_posting %></td>
+    <td><%= street_value.bin_count %></td>
+    <td><%= street_value.number_overflowing %></td>
+    <td><%= street_value.smoking %></td>
+    <td><%= street_value.drinks %></td>
+    <td><%= street_value.confectionary %></td>
+    <td><%= street_value.fast_food %></td>
+    <td><%= street_value.pedestrian_individual %></td>
+    <td><%= street_value.business %></td>
+    <td><%= street_value.domestic %></td>
+    <td><%= street_value.construction %></td>
+    <td><%= street_value.animal_faeces %></td>
+    <td><%= street_value.other %></td>
+    <td><%= link_to 'Show', street_value %></td>
+    <td><%= link_to 'Edit', edit_street_value_path(street_value) %></td>
+    <td><%= link_to 'Destroy', street_value, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Street value', new_street_value_path %>

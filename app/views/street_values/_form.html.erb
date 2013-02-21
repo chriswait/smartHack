@@ -1,0 +1,97 @@
+<%= form_for(@street_value) do |f| %>
+  <% if @street_value.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@street_value.errors.count, "error") %> prohibited this street_value from being saved:</h2>
+
+      <ul>
+      <% @street_value.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :recorded %><br />
+    <%= f.datetime_select :recorded %>
+  </div>
+  <div class="field">
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </div>
+  <div class="field">
+    <%= f.label :dog_foul %><br />
+    <%= f.text_field :dog_foul %>
+  </div>
+  <div class="field">
+    <%= f.label :vandalism %><br />
+    <%= f.text_field :vandalism %>
+  </div>
+  <div class="field">
+    <%= f.label :graffiti %><br />
+    <%= f.text_field :graffiti %>
+  </div>
+  <div class="field">
+    <%= f.label :weeds %><br />
+    <%= f.text_field :weeds %>
+  </div>
+  <div class="field">
+    <%= f.label :detritus %><br />
+    <%= f.text_field :detritus %>
+  </div>
+  <div class="field">
+    <%= f.label :fly_posting %><br />
+    <%= f.text_field :fly_posting %>
+  </div>
+  <div class="field">
+    <%= f.label :bin_count %><br />
+    <%= f.text_field :bin_count %>
+  </div>
+  <div class="field">
+    <%= f.label :number_overflowing %><br />
+    <%= f.text_field :number_overflowing %>
+  </div>
+  <div class="field">
+    <%= f.label :smoking %><br />
+    <%= f.text_field :smoking %>
+  </div>
+  <div class="field">
+    <%= f.label :drinks %><br />
+    <%= f.text_field :drinks %>
+  </div>
+  <div class="field">
+    <%= f.label :confectionary %><br />
+    <%= f.text_field :confectionary %>
+  </div>
+  <div class="field">
+    <%= f.label :fast_food %><br />
+    <%= f.text_field :fast_food %>
+  </div>
+  <div class="field">
+    <%= f.label :pedestrian_individual %><br />
+    <%= f.text_field :pedestrian_individual %>
+  </div>
+  <div class="field">
+    <%= f.label :business %><br />
+    <%= f.text_field :business %>
+  </div>
+  <div class="field">
+    <%= f.label :domestic %><br />
+    <%= f.text_field :domestic %>
+  </div>
+  <div class="field">
+    <%= f.label :construction %><br />
+    <%= f.text_field :construction %>
+  </div>
+  <div class="field">
+    <%= f.label :animal_faeces %><br />
+    <%= f.text_field :animal_faeces %>
+  </div>
+  <div class="field">
+    <%= f.label :other %><br />
+    <%= f.text_field :other %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

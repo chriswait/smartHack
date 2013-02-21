@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220161645) do
+ActiveRecord::Schema.define(:version => 20130220162246) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
@@ -89,10 +89,10 @@ ActiveRecord::Schema.define(:version => 20130220161645) do
   add_index "streets", ["ward_id"], :name => "index_streets_on_ward_id"
 
   create_table "votes", :force => true do |t|
-    t.boolean  "isVandilism"
+    t.boolean  "is_vandalism"
     t.integer  "doodle_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "votes", ["doodle_id"], :name => "index_votes_on_doodle_id"
