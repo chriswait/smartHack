@@ -11,8 +11,10 @@ def getLocationInfo(address):
 	data = urllib2.urlopen(url)
 
 	j = json.load(data)
-	#if len(j['results']) == 0:
-		#print j
+
+	if len(j['results']) == 0:
+		print j
+
 	a = j['results'][0]['geometry']['location']
 	
 	return (a['lat'], a['lng'])
@@ -24,18 +26,14 @@ def getAddressInformation((lat, lng)):
 	url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false"
 	data = urllib2.urlopen(url)
 	j = json.load(data)
-	#getPostcode(j)
+	if len(j['results']) == 0:
+		print j
 	getStreetname(j)
-	#print j
-
-# extracts the postcode from a json object
-def getPostcode(json):
-	a = json['results'][0]['address_components'][5]['long_name']
-	print a
 
 def getStreetname(json):
 	a = json['results'][0]['address_components'][1]['long_name']
 	print a
+	return a
 	
 
 def main():
@@ -64,7 +62,7 @@ def main():
 		point = getLocationInfo(address)
 		getAddressInformation(point)
 		fileWriter.writerow([postcode, roll, point[0], point[1]])
-		sleep(0.2)
+		sleep(0.4)
 		
 
 
