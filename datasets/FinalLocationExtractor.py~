@@ -12,10 +12,7 @@ def getJsonObject(url):
 
 # not really used or needed atm since all addresses are provided.
 def getStreetAddress((lat, lng)):
-	lat = str(lat)
-	lng = str(lng)
-	url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false"
-	json = getJsonObject(url)
+	json = getJsonByLatLng((lat, lng))
 	street_name = json['results'][0]['address_components']
 	types = ['route', 'bus_station']
 	street_name = filter(lambda x: len(set(x['types']).intersection(types)), street_name)[0]['long_name']
@@ -25,14 +22,27 @@ def getStreetAddress((lat, lng)):
 		postcode = "FAIL"
 	return [street_name, postcode]
 
+def getJsonByAddress(address):
+	address = re.sub(r"\s+", '+', address)
+	url = "http://maps.googleapis.com/maps/api/geocode/json?address="+address+",+edinburgh&sensor=false"
+	json = getJsonObject(url)
+	return json
+
+# needed to get postcodes
+def getJsonByLatLng((lat, lng)):
+	lat = str(lat)
+	lng = str(lng)
+	url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false"
+	json = getJsonObject(url)
+	return json
+
 
 # returns an object with the original address, the postcode, the ward and the latlng.
 def getAllInformation(address):
-	address2 = re.sub(r"\s+", '+', address)
-	url = "http://maps.googleapis.com/maps/api/geocode/json?address="+address2+",+edinburgh&sensor=false"
-	json = getJsonObject(url)
+	json = getJsonByAddress(address)
 	latlng = json['results'][0]['geometry']['location']
-	postcode = findPostcode(json)
+	latlng = (latlng['lat'], latlng['lng'])
+	postcode = findPostcode(getJsonByLatLng(latlng))
 	if postcode == "FAIL":
 		return "FAIL"
 	ward = getWard(postcode)
