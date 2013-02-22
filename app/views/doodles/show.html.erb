@@ -20,6 +20,7 @@
   <%= @doodle.longitude %>
 </p>
 
+<%= link_to 'Clean up', '#', 'data-id' => @doodle.id %>
+<%= link_to 'Keep', '#', 'data-id' => @doodle.id %>
 
-<%= link_to 'Edit', edit_doodle_path(@doodle) %> |
-<%= link_to 'Back', doodles_path %>
+<%= link_to 'Back', map %>
