@@ -10,6 +10,18 @@
 	// create a map in the "map" div, set the view to a given place and zoom
 	var map = L.map('map').setView([55.95, -3.2200], 11);
 
+
+	// Get the images to overlay
+	$.get("doodles.json",
+		function(data) {
+			$.each(imagePoint, index) {
+				var imageURL = "https://dl.dropbox.com/1/view/b9kibak2w6f2qc8/Apps/ilwhack_images/doodle_"+imagePoint.id+"_image_super_thumb.jpeg";
+				addPlacemarker(imageURL, imagePoint.latitude, imagePoint.longitude);
+			}
+		}
+	);
+				
+
 	// add an OpenStreetMap tile layer
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 		attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -92,15 +104,15 @@
 		});
 	}
 
-    function addPlacemarker(url, latitude, longitude){
-        var graffittiIcon = L.icon({
-            iconUrl: url,
-            iconSize: [30, 30],
-            iconAnchor: [0,0],
-        });
+	    function addPlacemarker(url, latitude, longitude){
+		var graffittiIcon = L.icon({
+		    iconUrl: url,
+		    iconSize: [30, 30],
+		    iconAnchor: [0,0],
+		});
 
-        L.marker([latitude, longitude], {icon: graffittiIcon}).addTo(map);
-    }
+		L.marker([latitude, longitude], {icon: graffittiIcon}).addTo(map);
+	    }
 
 
 	geoJsonDat = L.geoJson(wardsData, {
