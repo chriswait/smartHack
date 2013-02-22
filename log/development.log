@@ -15572,3 +15572,262 @@ Served asset /application.js - 304 Not Modified (9ms)
 
 Started GET "/assets/geoJsonWardsMin.js?body=1" for 127.0.0.1 at 2013-02-22 01:59:08 +0000
 Served asset /geoJsonWardsMin.js - 304 Not Modified (0ms)
+
+
+Started GET "/map" for 127.0.0.1 at 2013-02-22 02:14:31 +0000
+Connecting to database specified by database.yml
+Processing by WardsController#map as HTML
+  [1m[36mWard Load (0.2ms)[0m  [1mSELECT "wards".* FROM "wards" [0m
+  Rendered wards/map.html.erb within layouts/application (64.9ms)
+Completed 200 OK in 340ms (Views: 241.7ms | ActiveRecord: 33.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:32 +0000
+Served asset /application.css - 304 Not Modified (21ms)
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:32 +0000
+Served asset /jquery.ui.core.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:32 +0000
+Served asset /jquery.ui.theme.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery.ui.slider.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:32 +0000
+Served asset /jquery.ui.slider.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:32 +0000
+Served asset /comments.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/doodles.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /doodles.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/pydwg_ns.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /pydwg_ns.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /scaffolds.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/street_values.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /street_values.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/streets.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /streets.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/votes.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /votes.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/ward_values.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /ward_values.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/wards.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /wards.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /jquery.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /jquery.ui.core.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /jquery.ui.widget.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /jquery.ui.mouse.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /jquery.ui.slider.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /comments.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/doodles.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /doodles.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/pydwg_ns.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /pydwg_ns.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/street_values.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /street_values.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/streets.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /streets.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/votes.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /votes.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/ward_values.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /ward_values.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/wards.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /wards.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /application.js - 304 Not Modified (73ms)
+
+
+Started GET "/assets/geoJsonWardsMin.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:33 +0000
+Served asset /geoJsonWardsMin.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery-ui/ui-bg_flat_75_ffffff_40x100.png" for 127.0.0.1 at 2013-02-22 02:14:34 +0000
+Served asset /jquery-ui/ui-bg_flat_75_ffffff_40x100.png - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery-ui/ui-bg_highlight-soft_75_cccccc_1x100.png" for 127.0.0.1 at 2013-02-22 02:14:34 +0000
+Served asset /jquery-ui/ui-bg_highlight-soft_75_cccccc_1x100.png - 304 Not Modified (11ms)
+
+
+Started GET "/assets/jquery-ui/ui-bg_glass_75_e6e6e6_1x400.png" for 127.0.0.1 at 2013-02-22 02:14:34 +0000
+Served asset /jquery-ui/ui-bg_glass_75_e6e6e6_1x400.png - 304 Not Modified (3ms)
+
+
+Started GET "/map" for 127.0.0.1 at 2013-02-22 02:14:35 +0000
+Processing by WardsController#map as HTML
+  [1m[35mWard Load (0.3ms)[0m  SELECT "wards".* FROM "wards" 
+  Rendered wards/map.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 82ms (Views: 79.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /jquery.ui.core.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /jquery.ui.theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.ui.slider.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /jquery.ui.slider.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /comments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/doodles.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /doodles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pydwg_ns.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /pydwg_ns.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/street_values.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /street_values.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/streets.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /streets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/votes.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /votes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ward_values.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /ward_values.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/wards.css?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /wards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /jquery.ui.core.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /jquery.ui.widget.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /jquery.ui.mouse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /jquery.ui.slider.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /comments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/doodles.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /doodles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pydwg_ns.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /pydwg_ns.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/street_values.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /street_values.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/streets.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /streets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/votes.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /votes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ward_values.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /ward_values.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/wards.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /wards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /application.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/geoJsonWardsMin.js?body=1" for 127.0.0.1 at 2013-02-22 02:14:36 +0000
+Served asset /geoJsonWardsMin.js - 304 Not Modified (0ms)
