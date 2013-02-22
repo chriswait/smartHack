@@ -3,7 +3,7 @@ class DoodlesController < ApplicationController
   # GET /doodles/ward/1.json
   def get_ward_graffiti
     @doodles = nil
-    @streets = Street.where(:ward => params[:id])
+    @streets = Street.where(:ward_id => params[:id])
     @streets.each do |street|
       @doodles += Doodle.where(:street => street)
     end
