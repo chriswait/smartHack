@@ -18,6 +18,7 @@ Ilwhack::Application.routes.draw do
   
   match 'contents' => 'contents.html', :as => :contents
   match 'map' => 'wards#map', :as => :map
+  match 'doodles/ward/:id' => 'doodles#get_ward_graffiti', :as => :get_ward_graffiti
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
