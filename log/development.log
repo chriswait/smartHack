@@ -16094,3 +16094,4 @@ Served asset /jquery.imagesloaded.min.js - 304 Not Modified (3ms)
 Started GET "/assets/modernizr.custom.61726.js?body=1" for 127.0.0.1 at 2013-02-22 02:21:35 +0000
 Served asset /modernizr.custom.61726.js - 304 Not Modified (3ms)
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
