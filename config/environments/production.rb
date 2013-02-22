@@ -1,6 +1,13 @@
 Ilwhack::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  ENV['DROPBOX_APP_KEY']='0q5sz2936h1x9vn'
+  ENV['DROPBOX_APP_SECRET']='w1eyi2w3txmaxdd'
+  ENV['DROPBOX_ACCESS_TYPE']='app_folder'
+  ENV['DROPBOX_USER_ID']='19349814'
+  ENV['DROPBOX_ACCESS_TOKEN']='m1v0rpi0lng0100'
+  ENV['DROPBOX_ACCESS_TOKEN_SECRET']='vltxkm5o7q2fbsw'
+
   # Add paperclip-dropbox envirnment vairables (keys) directly to Heroku
   
   # Code is not reloaded between requests
