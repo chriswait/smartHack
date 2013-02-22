@@ -108,12 +108,23 @@
                 });
             }
             
+            function addPlacemarker(url, latitude, longitude){
+                var graffittiIcon = L.icon({
+                    iconUrl: url,
+                    iconSize: [30, 30],
+                    iconAnchor: [0,0],
+                });
+
+                L.marker([latitude, longitude], {icon: graffittiIcon}).addTo(map);
+            }
+
             geoJsonDat = L.geoJson(wardsData, {
                 style: style,
                 onEachFeature: onEachFeature
             }).addTo(map);
 
-            var oneLayer;
+                    
+                
 
 
 
