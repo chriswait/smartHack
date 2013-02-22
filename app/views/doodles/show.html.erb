@@ -20,7 +20,7 @@
   <%= @doodle.longitude %>
 </p>
 
-<%= link_to 'Clean up', '#', 'data-id' => @doodle.id %>
-<%= link_to 'Keep', '#', 'data-id' => @doodle.id %>
+<%= link_to 'Clean up', '#', :controller => :votes, :action => :create %>
+<%= link_to 'Keep', '#', :controller => :votes, :action => :create %>
 
 <%= link_to 'Back', map %>
