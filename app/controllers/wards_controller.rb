@@ -10,6 +10,17 @@ class WardsController < ApplicationController
     end
   end
 
+  # GET /map
+  # GET /map.json
+  def map
+    @wards = Ward.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @wards }
+    end
+  end
+
   # GET /wards/1
   # GET /wards/1.json
   def show

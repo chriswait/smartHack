@@ -1,0 +1,124 @@
+<%= javascript_include_tag "http://d3js.org/d3.v3.min.js" %>
+<%= stylesheet_link_tag "http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" %>
+<%= javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js" %>
+<%= javascript_include_tag 'geoJsonWardsMin' %>
+
+<h2>Ward Visualiser</h2>
+<div id="map"></div>
+<div id="timeSlide"></div>
+<script>
+	// create a map in the "map" div, set the view to a given place and zoom
+	var map = L.map('map').setView([55.95, -3.2200], 11);
+
+	// add an OpenStreetMap tile layer
+	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+		attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);
+
+	var geoJsonDat
+
+	// DATABASE DATA GOES IN HERE
+	//			|
+	//			v
+
+	// Need to get previous/current/next object of ward data based on current slider position...
+
+	//Slider gets continuous colour value by interpolating between states at two time steps
+	var prevWardStates = [1, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 2, 1, 2, 1, 2, 2];
+	var nextWardStates = [2, 3, 3, 2, 3, 2, 3, 3, 4, 2, 2, 4, 2, 3, 2, 4, 3];
+	//At the moment this data implies everywhere is getting worse :P
+
+	//Colours start at the previous state
+	var currentColours = [];
+	for ( i = 0; i < prevWardStates.length; i++) {
+		currentColours[i] = prevWardStates[i];
+	}
+
+	function resetHighlight(e) {
+		var layer = e.target;
+		layer.setStyle(style(layer.feature));
+	};
+
+	//Make the assumtion that state values go between 1 and 4
+	function pickColour(idTag) {
+		var heatValue = currentColours[idTag - 1];
+		return "#" + componentToHex(heatValue * (255.0 / 4)) + "00" + componentToHex((4 - heatValue) * (255.0 / 4));
+
+	};
+
+	function componentToHex(c) {
+		var intVal = parseInt(c);
+		var hex = intVal.toString(16);
+		return hex.length == 1 ? "0" + hex : hex;
+	}
+
+	function style(feature) {
+		return {
+			weight : 2,
+			opacity : 1,
+			color : 'white',
+			dashArray : '3',
+			fillOpacity : 0.5,
+			fillColor : pickColour(feature.properties.id)
+		};
+	}
+
+	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight : 5,
+			color : '#666',
+			dashArray : '',
+			fillOpacity : 0.7
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera) {
+			layer.bringToFront();
+		}
+
+	}
+
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover : highlightFeature,
+			mouseout : resetHighlight,
+			click : zoomToFeature
+		});
+	}
+
+	geoJsonDat = L.geoJson(wardsData, {
+		style : style,
+		onEachFeature : onEachFeature
+	}).addTo(map);
+
+	var oneLayer;
+
+	function changeTime() {
+		var time = $("#timeSlide").slider("value")
+		for ( i = 0; i < currentColours.length; i++) {
+			currentColours[i] = (1 - time) * prevWardStates[i] + (time) * nextWardStates[i];
+		}
+		geoJsonDat.eachLayer(function(layer) {
+			layer.setStyle(style(layer.feature));
+		});
+	}
+
+	$(function() {
+		$("#timeSlide").slider({
+			orientation : "horizontal",
+			range : "min",
+			max : 1,
+			value : 0,
+			slide : changeTime,
+			change : changeTime
+		});
+
+		$("#timeSlide").slider("option", "step", 0.001);
+	});
+
+</script>

@@ -17,6 +17,7 @@ Ilwhack::Application.routes.draw do
   # first created -> highest priority.
   
   match 'contents' => 'contents.html', :as => :contents
+  match 'map' => 'wards#map', :as => :map
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
