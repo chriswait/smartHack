@@ -5,11 +5,15 @@
 <h1>Feed</h1>
 <%= link_to 'Upload', new_doodle_path %>
 
-<div id="graffiti_stream">
-	<% @doodles.each do |doodle| %>
-	  <%= render 'feed_item', :doodle => doodle %>
-	<% end %>
-</div>
+<% if @doodles.empty? %>
+	<h4>No graffiti!</h4>
+<% else %>
+	<div id="graffiti_stream">
+		<% @doodles.each do |doodle| %>
+		  <%= render 'feed_item', :doodle => doodle %>
+		<% end %>
+	</div>
+<% end %>
 
 <script>
 	$('#graffiti_stream').imagesLoaded( function(){
