@@ -2,7 +2,7 @@ class DoodlesController < ApplicationController
   # GET /doodles
   # GET /doodles.json
   def index
-    @doodles = Doodle.all
+    @doodles = Doodle.order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb

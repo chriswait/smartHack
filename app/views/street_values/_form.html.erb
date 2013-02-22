@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :street %><br />
-    <%= f.text_field :street %>
+    <%= f.collection_select :street_id, Street.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :dog_foul %><br />

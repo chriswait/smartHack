@@ -1,28 +1,56 @@
 <%= javascript_include_tag 'geoJsonWardsMin' %>
-<h1>Listing doodles</h1>
+<%= javascript_include_tag 'jquery.masonry.min' %>
+<%= javascript_include_tag 'jquery.imagesloaded.min' %>
+<%= javascript_include_tag 'modernizr.custom.61726' %>
 
-<table>
-  <tr>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>Street</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Feed</h1>
+<%= link_to 'Upload', new_doodle_path %>
 
-<% @doodles.each do |doodle| %>
-  <tr>
-    <td><%= doodle.latitude %></td>
-    <td><%= doodle.longitude %></td>
-    <td><%= doodle.street.name %></td>
-    <td><%= link_to 'Show', doodle %></td>
-    <td><%= link_to 'Edit', edit_doodle_path(doodle) %></td>
-    <td><%= link_to 'Destroy', doodle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<div id="graffiti_stream">
+	<% @doodles.each do |doodle| %>
+	  <%= render 'feed_item', :doodle => doodle %>
+	<% end %>
+</div>
 
-<br />
-
-<%= link_to 'New Doodle', new_doodle_path %>
+<script>
+	$('#graffiti_stream').imagesLoaded( function(){
+		$('#graffiti_stream').masonry({
+		  itemSelector: '.graffiti_item',
+		  columnWidth: 50,
+		  gutterWidth: 2,
+		  isAnimated: !Modernizr.csstransitions
+		});
+	});
+	
+	$('.graffiti_item').mouseenter(function() {
+		$(this).find('.graffiti_street, .vote_buttons').fadeIn(300);
+	}).mouseleave(function() {
+		$(this).find('.graffiti_street, .vote_buttons').fadeOut(300);
+	});
+	
+	function submitVote(doodle, vote) {
+		$.post(
+			'/votes',
+			{
+				'vote': {
+					'doodle_id': doodle,
+					'is_vandalism': vote
+				}
+			},
+			function(msg) {
+				item = $('.graffiti_item[data-id=' + doodle  + ']');
+				$('#graffiti_stream').masonry( 'remove', item ).masonry('reload');
+			}
+		);
+	}
+	
+	$('.vote_1 a').click(function() {
+		doodle_id = $(this).attr('data-id');
+		submitVote(doodle_id, 1);
+	});
+	
+	$('.vote_0 a').click(function() {
+		doodle_id = $(this).attr('data-id');
+		submitVote(doodle_id, 0);
+	});
+</script>

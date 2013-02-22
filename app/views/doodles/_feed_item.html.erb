@@ -1,0 +1,10 @@
+<div class="graffiti_item" data-id="<%= doodle.id %>" >
+	<%= image_tag doodle.image.url(:medium) %>
+	<div class="graffiti_street">
+		<h4><%= doodle.street.name %></h4>
+	</div>
+	<div class="vote_buttons">
+		<span class="vote_1"><%= link_to 'Clean up', '#', 'data-id' => doodle.id %></span>
+		<span class="vote_0"><%= link_to 'Keep', '#', 'data-id' => doodle.id %></span>
+	</div>
+</div>

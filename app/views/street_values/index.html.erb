@@ -1,4 +1,4 @@
-<h1>Listing street_values</h1>
+<h1>Listing Street Values</h1>
 
 <table>
   <tr>
@@ -30,7 +30,7 @@
 <% @street_values.each do |street_value| %>
   <tr>
     <td><%= street_value.recorded %></td>
-    <td><%= street_value.street %></td>
+    <td><%= street_value.street.name %></td>
     <td><%= street_value.dog_foul %></td>
     <td><%= street_value.vandalism %></td>
     <td><%= street_value.graffiti %></td>

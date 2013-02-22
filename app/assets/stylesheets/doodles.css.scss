@@ -1,3 +1,87 @@
 // Place all the styles related to the Doodles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$pale_green: #68D26D;
+$dark_green: #247C29;
+$off_white: #DDF5DE;
+$grey: #9D9D9D;
+
+#graffiti_stream {
+  max-width: 960px;
+  margin: 20px;
+  a:hover {
+    background-color: transparent;
+  }
+  .graffiti_item {
+    position: relative;
+    float: left;
+    border: 1px solid $dark_green;
+    margin: 2px 0px;
+    .graffiti_street {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      padding: 5px;
+      background-color: rgba(157, 157, 157, 0.5);
+      min-width: 80px;
+      h4 {
+        margin: 0;
+      }
+    }
+    img {
+      display: block;
+    }
+    .vote_buttons {
+      display: none;
+      background-color: rgba(157, 157, 157, 0.5);
+      padding: 2px 0px;
+      position: absolute;
+      bottom: 0;
+      right: 0px;
+      span {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      a, a:visited {
+        color: #000000;
+      }
+      .vote_1 {
+        a:hover {
+          color: red;
+        }
+      }
+      .vote_0 {
+        a:hover {
+          color: $pale_green;
+        }
+      }
+    }
+  }
+}
+
+.masonry,
+.masonry .masonry-brick {
+  -webkit-transition-duration: 0.7s;
+     -moz-transition-duration: 0.7s;
+      -ms-transition-duration: 0.7s;
+       -o-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+}
+
+.masonry {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.masonry .masonry-brick {
+  -webkit-transition-property: left, right, top;
+     -moz-transition-property: left, right, top;
+      -ms-transition-property: left, right, top;
+       -o-transition-property: left, right, top;
+          transition-property: left, right, top;
+}

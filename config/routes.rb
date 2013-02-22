@@ -15,6 +15,8 @@ Ilwhack::Application.routes.draw do
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
+  
+  match 'contents' => 'contents.html', :as => :contents
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
