@@ -16,10 +16,10 @@
                 function(data) {
                         $.each(data, function(index, imagePoint) {
                                 var imageURL = "https://dl.dropbox.com/1/view/b9kibak2w6f2qc8/Apps/ilwhack_images/doodle_"+imagePoint.id+"_image_super_thumb.jpg";
-                                console.log(imageURL);
+				addPlacemarker(imageURL, imagePoint.latitude, imagePoint.longitude){
                         });
                 }
-        );"
+        );
 				
 
 	// add an OpenStreetMap tile layer
