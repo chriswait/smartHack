@@ -1,4 +1,4 @@
-<%= javascript_include_tag "http://d3js.org/d3.v3.min.js" %>
+	<%= javascript_include_tag "http://d3js.org/d3.v3.min.js" %>
 <%= stylesheet_link_tag "http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" %>
 <%= javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js" %>
 <%= javascript_include_tag 'geoJsonWardsMin' %>
@@ -81,6 +81,7 @@
 
 	function zoomToFeature(e) {
 		map.fitBounds(e.target.getBounds());
+		console.log(e.target.feature.properties.id);
 	}
 
 	function onEachFeature(feature, layer) {
