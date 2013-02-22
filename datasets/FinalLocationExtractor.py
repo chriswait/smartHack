@@ -47,6 +47,8 @@ def getAllInformation(address):
 	if postcode == "FAIL":
 		return "FAIL"
 	ward = getWard(postcode)
+	if ward == "WARD FAIL":
+		return "WARD FAIL"
 	return [address, postcode, ward, latlng[0], latlng[1]]
 
 # merci Chris.
@@ -58,6 +60,8 @@ def getWard(postcode):
 
 	regex = re.compile(r"WardA\d\d")
 	search = regex.search(html)
+	if search == None:
+		return "WARD FAIL"
 	wardID = int(search.group()[5:])
 	print "Ward ", wardID, " Postcode: ", postcode
 	return wardID
@@ -83,6 +87,10 @@ def aggregateAddressRows(parseFile, saveFile, addressIndex):
 
 	file = open(saveFile, "wb")
 	fileWriter = csv.writer(file , delimiter=',',quotechar='|', 	quoting=csv.QUOTE_MINIMAL)
+
+	file = open("errors.csv", "wb")
+	error_file = csv.writer(file , delimiter=',',quotechar='|', 	quoting=csv.QUOTE_MINIMAL)
+
 	for row in rows:
 		print row
 		address = row[addressIndex]
@@ -92,8 +100,9 @@ def aggregateAddressRows(parseFile, saveFile, addressIndex):
 
 		info = getAllInformation(address)
 
-		if info == "FAIL" :
+		if info == "FAIL" or info == "WARD FAIL":
 			print "Failed on ", address
+			error_file.writerow([address] + [info])
 		else:
 			fileWriter.writerow(row + info[1:])
 			print info
