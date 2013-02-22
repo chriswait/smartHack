@@ -13,13 +13,13 @@
 
 	// Get the images to overlay
 	$.get("doodles.json",
-		function(data) {
-			$.each(imagePoint, index) {
-				var imageURL = "https://dl.dropbox.com/1/view/b9kibak2w6f2qc8/Apps/ilwhack_images/doodle_"+imagePoint.id+"_image_super_thumb.jpeg";
-				addPlacemarker(imageURL, imagePoint.latitude, imagePoint.longitude);
-			}
-		}
-	);
+                function(data) {
+                        $.each(data, function(index, imagePoint) {
+                                var imageURL = "https://dl.dropbox.com/1/view/b9kibak2w6f2qc8/Apps/ilwhack_images/doodle_"+imagePoint.id+"_image_super_thumb.jpg";
+                                console.log(imageURL);
+                        });
+                }
+        );"
 				
 
 	// add an OpenStreetMap tile layer
