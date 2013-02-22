@@ -1,5 +1,5 @@
 class DoodlesController < ApplicationController
-  # GET /doodles/ward/1
+
   # GET /doodles/ward/1.json
   def get_ward_graffiti
     @doodles = nil
@@ -9,7 +9,6 @@ class DoodlesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.erb
       format.json { render json: @doodles }
     end
   end
